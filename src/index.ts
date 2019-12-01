@@ -117,9 +117,11 @@ const init = (app: App<Model, MsgType>): Model => {
 
     gridCanvas.draw(ctx => {
         ctx.save();
+        ctx.fillStyle = "#fff";
         ctx.strokeStyle = toString(Config.gridColor);
         ctx.lineWidth = Config.ratio;
 
+        ctx.fillRect(0, 0, Config.windowWidth, Config.windowHeight);
         [...Array(Math.floor(Config.windowWidth / Config.gridGap))]
             .map((_, i) => i)
             .forEach(x => {
