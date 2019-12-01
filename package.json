@@ -1,0 +1,19 @@
+{
+  "name": "splash",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "parcel serve src/index.html",
+    "build": "parcel build src/index.html",
+    "now-build": "npm run build"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "parcel": "^1.12.4",
+    "sass": "^1.23.7",
+    "typescript": "^3.7.2"
+  }
+}
