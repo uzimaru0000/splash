@@ -93,6 +93,19 @@ const init = (app: App<Model, MsgType>): Model => {
     });
     display.addEventListener('dblclick', () => app.dispatch({ type: "RESET" }));
 
+    // スマホ対応
+    display.addEventListener<TouchEvent>('touchstart', (e) => {
+        const { clientX, clientY } = e.changedTouches[0];
+        app.dispatch({ type: "CLICK_CANVAS", payload: [clientX * Config.ratio, clientY * Config.ratio] });
+    });
+    display.addEventListener<TouchEvent>('touchend', (e) => {
+        app.dispatch({ type: "RELEASE_CLICK" });
+    });
+    display.addEventListener<TouchEvent>('touchmove', (e) => {
+        const { clientX, clientY } = e.changedTouches[0];
+        app.dispatch({ type: "MOVE_CANVAS", payload: [clientX * Config.ratio, clientY * Config.ratio] });
+    });
+
     setInterval(() => app.dispatch({ type: "TICK" }), Config.shotRate);
 
     const animation = (app: App<Model, MsgType>, currentTime: number = 0) => requestAnimationFrame(e => {
